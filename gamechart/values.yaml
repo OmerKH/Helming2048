@@ -63,6 +63,7 @@ ingress:
   enabled: true
   className: "nginx"
   annotations:
+    # nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/rewrite-target: /
   hosts:
     - host: 2048.local
