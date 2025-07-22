@@ -22,7 +22,8 @@ Cross-Platform: Works on Windows, macOS, and Linux
 
 📋 Prerequisites
 
-Docker (v20.10+)
-Git
-kubectl (for Kubernetes deployment)
-Minikube (for local Kubernetes)
+✅Docker (v20.10+)
+✅Git
+✅kubectl (for Kubernetes deployment)
+✅Minikube (for local Kubernetes)
+✅Helm
