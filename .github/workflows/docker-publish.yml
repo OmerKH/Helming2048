@@ -17,7 +17,10 @@ env:
 jobs:
   lint-and-docs:
     name: Lint & Docs Check
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, debian-latest, centos-latest]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -50,7 +53,10 @@ jobs:
     name:  Deploy to Staging
     if: github.event_name == 'pull_request'
     needs: lint-and-docs
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, debian-latest, centos-latest]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
