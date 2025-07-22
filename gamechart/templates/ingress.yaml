@@ -24,20 +24,33 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
-      http:
-        paths:
-          {{- range .paths }}
-          - path: {{ .path }}
-            {{- with .pathType }}
-            pathType: {{ . }}
+    {{- if .Values.ingress.hosts }}
+      {{- range .Values.ingress.hosts }}
+      - {{- if .host }}host: {{ .host | quote }}
+        {{- end }}
+        http:
+          paths:
+            {{- range .paths }}
+            - path: {{ .path }}
+              {{- with .pathType }}
+              pathType: {{ . }}
+              {{- end }}
+              backend:
+                service:
+                  name: {{ include "gamechart.fullname" $ }}
+                  port:
+                    number: {{ $.Values.service.port }}
             {{- end }}
-            backend:
-              service:
-                name: {{ include "gamechart.fullname" $ }}
-                port:
-                  number: {{ $.Values.service.port }}
-          {{- end }}
+      {{- end }}
+    {{- else }}
+      - http:
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: {{ include "gamechart.fullname" $ }}
+                  port:
+                    number: {{ $.Values.service.port }}
     {{- end }}
 {{- end }}

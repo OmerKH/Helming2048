@@ -33,7 +33,7 @@ jobs:
           fi
 
   deploy:
-    name: 🚀 Deploy on Merge
+    name:  Deploy on Merge
     if: github.event_name == 'push'
     needs: lint-and-docs
     runs-on: ubuntu-latest
