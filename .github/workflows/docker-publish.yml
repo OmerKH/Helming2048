@@ -40,6 +40,7 @@ jobs:
           helm template test-release ${{ env.CHART_PATH }} --debug --dry-run
 
       - name: Check README is up-to-date
+        shell: bash
         run: |
           if [ ! -f README.md ]; then
             echo "❌ README.md not found!"
