@@ -70,13 +70,23 @@ jobs:
         uses: azure/setup-kubectl@v3
 
 
-      - name: Configure Kubernetes access
+      # - name: Configure Kubernetes access
+      #   env:
+      #     KUBECONFIG_DATA: ${{ secrets.KUBECONFIG_DATA }}
+      #   shell: bash
+      #   run: |
+      #     echo "$KUBECONFIG_DATA" | base64 -d > kubeconfig
+      #     export KUBECONFIG=$PWD/kubeconfig
+      #     kubectl get nodes
+
+      - name: Configure Kubernetes access (Windows)
+        # if: runner.os == 'Windows'
         env:
           KUBECONFIG_DATA: ${{ secrets.KUBECONFIG_DATA }}
-        shell: bash
+        shell: pwsh
         run: |
-          echo "$KUBECONFIG_DATA" | base64 -d > kubeconfig
-          export KUBECONFIG=$PWD/kubeconfig
+          [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($env:KUBECONFIG_DATA)) | Out-File -FilePath kubeconfig
+          $env:KUBECONFIG = "$PWD\kubeconfig"
           kubectl get nodes
 
       - name: Helm upgrade
