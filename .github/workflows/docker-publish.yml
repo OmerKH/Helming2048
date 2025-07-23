@@ -66,8 +66,7 @@ jobs:
 
       - name: Set up Helm
         uses: azure/setup-helm@v4
-        with:
-          version: v4.0.0
+        
 
 
 
