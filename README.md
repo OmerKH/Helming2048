@@ -26,5 +26,5 @@ Cross-Platform: Works on Windows, macOS, and Linux
 ✅Git
 ✅kubectl (for Kubernetes deployment)
 ✅Minikube (for local Kubernetes)
-✅Helm   (for - Nginx)
+✅Helm   (for-Nginx-Ingress)
  
