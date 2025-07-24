@@ -11,7 +11,7 @@ Cloud deployment strategies
 CI/CD pipeline implementation
 Infrastructure as Code
 
-🚀 Features
+🚀 Features:
 
 Containerized Application: Fully dockerized 2048 game
 Multiple Deployment Options: Local, Kubernetes, Cloud, and PaaS
@@ -20,7 +20,7 @@ CI/CD Ready: GitHub Actions workflow included
 Production Ready: SSL/HTTPS configuration and monitoring
 Cross-Platform: Works on Windows, macOS, and Linux
 
-📋 Prerequisites
+📋 Prerequisites:
 
 ✅Docker (v20.10+)
 ✅Git
