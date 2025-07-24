@@ -49,6 +49,10 @@ jobs:
 
           echo "✅ README.md validation passed"
 
+      - name: Add success annotation
+        if: success()  # This ensures it only runs if the workflow succeeded
+        run: echo "::notice title=CI Status::✅ CI succeeded!"
+
   deploy:
     name:  Deploy to Staging
     if: github.event_name == 'pull_request'
